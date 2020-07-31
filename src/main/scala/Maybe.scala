@@ -15,4 +15,6 @@ abstract class Maybe[T] {
   def fold[U](ifEmpty: U)(f: T => U): U
 
   def getOrElse[U <: T](ifEmpty: U): T
+
+  def flatMap[U](f: T => Maybe[U]): Maybe[U]
 }
