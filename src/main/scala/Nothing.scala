@@ -14,4 +14,6 @@ final case class Nothing[T]() extends Maybe[T] {
   override def map[U](f: T => U): Maybe[U] = Nothing[U]()
 
   override def fold[U](ifEmpty: U)(f: T => U): U = ifEmpty
+
+  override def getOrElse[U <: T](ifEmpty: U): U = ifEmpty
 }

@@ -17,4 +17,6 @@ final case class Just[T](x: T) extends Maybe[T] {
   override def map[U](f: T => U): Maybe[U] = Just(f(x))
 
   override def fold[U](ifEmpty: U)(f: T => U): U = f(x)
+
+  override def getOrElse[U](ifEmpty: U): T = x
 }
