@@ -70,8 +70,3 @@ class JustSpec extends AnyFlatSpec with should.Matchers
     maybeNum.map(_.toString).getOrElse("-1") shouldBe "123"
   }
 }
-
-sealed trait MaybeFixture {
-
-  def toJust[T](t: T): Maybe[T] = Just[T](t)
-}
