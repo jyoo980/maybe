@@ -79,4 +79,12 @@ class JustSpec extends AnyFlatSpec with should.Matchers
     val maybeNum = toJust(123)
     maybeNum.map(_.toString).getOrElse("-1") shouldBe "123"
   }
+
+  it should "be able to be converted to a unary List[T]" in {
+    val maybeStr = toJust("hello")
+    maybeStr.toList match {
+      case h :: Nil => h shouldBe "hello"
+      case _ => fail(".toList on a Just[T] should have evaluated to a unary List[T]")
+    }
+  }
 }

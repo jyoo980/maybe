@@ -21,4 +21,6 @@ final case class Just[T](x: T) extends Maybe[T] {
   override def getOrElse[U](ifEmpty: U): T = x
 
   override def flatMap[U](f: T => Maybe[U]): Maybe[U] = f(x)
+
+  override def toList: List[T] = List(x)
 }

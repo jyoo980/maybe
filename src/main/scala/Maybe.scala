@@ -17,4 +17,6 @@ abstract class Maybe[T] {
   def getOrElse[U <: T](ifEmpty: U): T
 
   def flatMap[U](f: T => Maybe[U]): Maybe[U]
+
+  def toList: List[T]
 }

@@ -18,4 +18,6 @@ final case class Nothing[T]() extends Maybe[T] {
   override def getOrElse[U <: T](ifEmpty: U): U = ifEmpty
 
   override def flatMap[U](f: T => Maybe[U]): Maybe[U] = Nothing[U]()
+
+  override def toList: List[T] = List.empty
 }

@@ -46,6 +46,14 @@ class NothingSpec extends AnyFlatSpec with should.Matchers
       case Nothing() => succeed
     }
   }
+
+  it should "be able to be converted to an empty List[T] instance" in {
+    val none = toNothing[Int]
+    none.toList match {
+      case Nil => succeed
+      case _ => fail(".toList on a Nothing should have been converted to an empty List[T]")
+    }
+  }
 }
 
 
