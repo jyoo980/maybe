@@ -60,6 +60,16 @@ class JustSpec extends AnyFlatSpec with should.Matchers
     maybeStr.exists(_ == "a") shouldBe true
   }
 
+  it should "evaluate to a Just[T] value when .flatMap is called on it" in {
+    def f(x: Int): Maybe[Int] =
+      Just(x + 1)
+    val maybeNum = toJust(1)
+    maybeNum.flatMap(f) match {
+      case Just(n) => n shouldBe 2
+      case _ => fail(".flatMap failed to produce a Just[T] value")
+    }
+  }
+
   it should "not fail when .getOrElse is called" in {
     val maybeNum = toJust(1)
     maybeNum.getOrElse(-1) shouldBe 1

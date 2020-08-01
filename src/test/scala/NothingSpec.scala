@@ -36,6 +36,16 @@ class NothingSpec extends AnyFlatSpec with should.Matchers
     val none = toNothing[String]
     none.filterNot(_ == "apple") shouldBe Nothing()
   }
+
+  it should "evaluate to Nothing when .flatMap is called" in {
+    def f(x: String): Maybe[String] =
+      Just(x * 3)
+    val none = toNothing[String]
+    none.flatMap(f) match {
+      case Just(_) => fail("calling .flatMap on Nothing should not have yielded Just[T]")
+      case Nothing() => succeed
+    }
+  }
 }
 
 
