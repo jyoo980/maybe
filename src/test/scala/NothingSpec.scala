@@ -18,7 +18,7 @@ class NothingSpec extends AnyFlatSpec with should.Matchers
       fail("calling .get on Nothing failed to throw a NoSuchElementException")
     } catch {
       case _: NoSuchElementException => succeed
-      case e => fail(s"calling .get on Nothing yielded: $e")
+      case e: Throwable => fail(s"calling .get on Nothing yielded: $e")
     }
   }
 
@@ -35,6 +35,15 @@ class NothingSpec extends AnyFlatSpec with should.Matchers
   it should "have no effect when .filterNot is called" in {
     val none = toNothing[String]
     none.filterNot(_ == "apple") shouldBe Nothing()
+  }
+
+  it should "evaluate to the alternate when .orElse is called" in {
+    val alternate = toJust(22)
+    val none = toNothing[Int]
+    none.orElse(alternate) match {
+      case Just(num) => num shouldBe 22
+      case _ => fail("calling .orElse on Nothing should not have yielded a Nothing given a Just[T]")
+    }
   }
 
   it should "evaluate to Nothing when .flatMap is called" in {
