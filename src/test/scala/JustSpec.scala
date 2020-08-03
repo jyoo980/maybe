@@ -60,7 +60,7 @@ class JustSpec extends AnyFlatSpec with should.Matchers
     maybeStr.exists(_ == "a") shouldBe true
   }
 
-  it should "evalute to a Just[T] value when .orElse is called on it" in {
+  it should "evaluate to a Just[T] value when .orElse is called on it" in {
     val alternate = toJust(-1)
     val maybeNum = toJust(1)
     maybeNum.orElse(alternate) match {
