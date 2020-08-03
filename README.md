@@ -39,10 +39,22 @@ val maybeSomeBigNum = sneakyFactorial(11)
 // cause a compiler error
 maybeSomeBigNum * 2 // compiler error
 
+// Use explicit pattern matching
 maybeSomeBigNum match {
   case Just(n) => n * 2 // this is fine
   case Nothing() => // handle the "null" case here
 }
+```
+
+Note that we have access to _all_ the standard functions that are able to be called on sequences. This is because
+one can effectively think of a `Maybe[T]` as a unary list
+
+```Scala
+// fine
+maybeSomeBigNum.map(_ * 2).getOrElse(-1)
+
+// also fine
+maybeSomeBigNum.fold(-1)(_ * 2)
 ```
 
 This is a rather contrived use case, but it demonstrates the safety gained from replacing nullable values with a
