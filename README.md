@@ -24,7 +24,7 @@ int someBigNum = sneakyFactorial(11);
 
 We can rewrite the method above as a function that uses the `Maybe[T]` type in Scala
 ```Scala
-def sneakyFactorial(n: Int): Maybe[Int] = {
+def sneakyFactorial(n: Int): Maybe[Int] =
   if (n > 10) {
     Nothing()
   } else if (n == 1) {
@@ -32,17 +32,16 @@ def sneakyFactorial(n: Int): Maybe[Int] = {
   } else {
     sneakyFactorial(n - 1).map(_ * n)
   }
-}
 
 val maybeSomeBigNum = sneakyFactorial(11)
 
 // using maybeSomeBigNum without destructuring it into a Just[T] or a Nothing[T] will
-// case a compiler error
+// cause a compiler error
 maybeSomeBigNum * 2 // compiler error
 
 maybeSomeBigNum match {
   case Just(n) => n * 2 // this is fine
-  case Nothing(_) => // handle the "null" case here
+  case Nothing() => // handle the "null" case here
 }
 ```
 
