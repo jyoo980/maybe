@@ -1,4 +1,5 @@
 # maybe
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a barebones implementation of Scala's own `Option[T]` library type, conveniently named `Maybe[T]`. The name comes from the [maybe monad](https://en.wikibooks.org/wiki/Haskell/Understanding_monads/Maybe), which also happens to be the the name of the type that is analogous to `Option[T]` in Haskell.
 
