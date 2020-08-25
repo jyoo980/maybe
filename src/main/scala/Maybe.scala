@@ -60,6 +60,7 @@ abstract class Maybe[T] {
    *  maybeNum match {
    *    case Just(n) => n + 2
    *    case _ => -1
+   *  }
    *
    * @param ifEmpty evaluates to this if the Maybe[T] instance is a Nothing[T]
    * @param f mapping function from T => U
