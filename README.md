@@ -66,7 +66,10 @@ at compile-time to make sure they are handled.
   * this is optional if you have `sbt` installed
 
 ## Working with maybe
-* `sbt compile` to compile the project
-* `sbt test` to run all tests under the `test` directory
-* `sbt clean` to remove generated files from the compile step
+maybe is an `sbt` project so it's relatively easy to spin up
+
+* Run `sbt` to start the build server
+  * `compile` to build the project
+  * `test` to run all tests under the `test` directory (spec files)
+  * `clean` to remove all generated code
 
