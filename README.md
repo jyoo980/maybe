@@ -25,14 +25,11 @@ int someBigNum = sneakyFactorial(11);
 
 We can rewrite the method above as a function that uses the `Maybe[T]` type in Scala
 ```Scala
-def sneakyFactorial(n: Int): Maybe[Int] =
-  if (n > 10) {
-    Nothing()
-  } else if (n == 1) {
-    Just(1)
-  } else {
-    sneakyFactorial(n - 1).map(_ * n)
-  }
+def sneakyFactorial(n: Int): Maybe[Int] = n match {
+  case num if num > 10 => Nothing()
+  case num if num == 1 => Just(1)
+  case num => sneakyFactorial(num - 1).map(_ * num)
+}
 
 val maybeSomeBigNum = sneakyFactorial(11)
 
