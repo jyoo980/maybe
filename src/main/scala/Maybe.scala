@@ -67,7 +67,7 @@ abstract class Maybe[T] {
    * @tparam U return type of this fold operation
    * @return some instance of type U
    */
-  def fold[U](ifEmpty: U)(f: T => U): U
+  def fold[U](ifEmpty: => U)(f: T => U): U
 
   /** Offers an alternate instance of Maybe[U] in case this is an instance of Nothing[T]
    *
@@ -75,7 +75,7 @@ abstract class Maybe[T] {
    * @tparam U supertype of T
    * @return this Maybe[T] if it is an instance of Just[T], else offer alternate
    */
-  def orElse[U >: T](alternate: Maybe[U]): Maybe[U]
+  def orElse[U >: T](alternate: => Maybe[U]): Maybe[U]
 
   /** Unwrapping function for this Maybe[T]
    *
@@ -83,7 +83,7 @@ abstract class Maybe[T] {
    * @tparam U subtype of T
    * @return the unwrapped T if this is an instance of Just[T], else offer ifEmpty
    */
-  def getOrElse[U <: T](ifEmpty: U): T
+  def getOrElse[U <: T](ifEmpty: => U): T
 
   /** Identical to .map, except the mapping function produces the type Maybe[U]
    *
