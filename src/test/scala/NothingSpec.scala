@@ -3,8 +3,7 @@ import java.util.NoSuchElementException
 import org.scalatest.matchers._
 import org.scalatest.flatspec.AnyFlatSpec
 
-class NothingSpec extends AnyFlatSpec with should.Matchers
-  with MaybeFixture {
+class NothingSpec extends AnyFlatSpec with should.Matchers with MaybeFixture {
 
   "Nothing" should "not be defined" in {
     val none = toNothing
@@ -64,5 +63,3 @@ class NothingSpec extends AnyFlatSpec with should.Matchers
     }
   }
 }
-
-

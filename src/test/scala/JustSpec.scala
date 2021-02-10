@@ -1,8 +1,7 @@
 import org.scalatest.matchers._
 import org.scalatest.flatspec.AnyFlatSpec
 
-class JustSpec extends AnyFlatSpec with should.Matchers
-  with MaybeFixture {
+class JustSpec extends AnyFlatSpec with should.Matchers with MaybeFixture {
 
   "a Just[T]" should "be defined" in {
     val maybeNum = toJust(1)
